@@ -1,0 +1,18 @@
+.outlet {
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: calc(100vh - 96px);
+}
+
+.layoutBlock {
+  padding: 0 24px;
+  background-color: #2C3031;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.containerImg {
+  height: 50%;
+}
