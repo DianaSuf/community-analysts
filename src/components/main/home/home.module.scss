@@ -1,16 +1,12 @@
-.block {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.section {
   padding: 72px 24px 24px 24px;
+  display: grid;
+  grid-template-columns: 58fr 39fr;
+  gap: 3%;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
-  width: 58%;
+.block {
+  align-content: center;
 }
 
 .contentText {
@@ -20,10 +16,6 @@
 .contentButton {
   font-size: 1.4rem;
   height: 3.6rem;
-}
-
-.containerImg {
-  width: 39%;
 }
 
 .imgHome {

@@ -1,4 +1,6 @@
 import styles from '../layout.module.scss';
+import { Button } from "@/components/ui/button"
+import { Item } from "@/components/ui/item"
 
 export default function Header() {
   return (
@@ -6,6 +8,14 @@ export default function Header() {
       <div className={styles.containerImg}>
         <img src="/img/logo.svg" alt=""/>
       </div>
+      <Item>
+        <Button variant="outline">
+          Подать заявку
+        </Button>
+        <Button variant="outline">
+          Войти в аккаунт
+        </Button>
+      </Item>
     </header>
   )
 }

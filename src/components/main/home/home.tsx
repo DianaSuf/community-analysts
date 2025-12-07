@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { Item, ItemGroup } from "@/components/ui/item"
 import { AspectRatio } from "@radix-ui/react-aspect-ratio"
 import { PlusIcon } from "lucide-react"
 import styles from "./home.module.scss"
@@ -6,8 +7,8 @@ import styles from "./home.module.scss"
 export default function Home() {
   return (
     <>
-      <section className={styles.block}>
-        <div className={styles.content}>
+      <ItemGroup className={styles.section}>
+        <Item className={styles.block}>
           <h1>
             Сообщество бизнес-инженеров Урала
           </h1>
@@ -19,13 +20,11 @@ export default function Home() {
           <Button className={styles.contentButton}>
             Подать заявку на вступление <PlusIcon />
           </Button>
-        </div>
-        <div className={styles.containerImg}>
-          <AspectRatio ratio={543 / 322}>
-            <img src="/img/home.jpg" alt="main" className={styles.imgHome}></img>
-          </AspectRatio>
-        </div>
-      </section>
+        </Item>
+        <AspectRatio ratio={543 / 322}>
+          <img src="/img/home.jpg" alt="main" className={styles.imgHome}></img>
+        </AspectRatio>
+      </ItemGroup>
     </>
   )
 }

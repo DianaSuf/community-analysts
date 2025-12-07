@@ -2,10 +2,11 @@ import styles from '../layout.module.scss';
 
 export default function Footer() {
   return (
-    <header className={styles.layoutBlock}>
+    <footer className={`${styles.layoutBlock} ${styles.footer}`}>
       <div className={styles.containerImg}>
-        <img src="/img/logo.svg" alt=""/>
+        <img src="/img/brusnika.svg" alt=""/>
       </div>
-    </header>
+      <p className={styles.layoutText}>Команда проектного практикума “Women moment”</p>
+    </footer>
   )
 }
