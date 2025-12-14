@@ -161,7 +161,7 @@ h2 {
   font-weight: 500;
 }
 
-p, ul, li {
+ul, li {
   color: #000000;
   font-size: 1.4rem;
   font-weight: 400;
@@ -173,9 +173,19 @@ span {
   font-weight: 500;
 }
 
-button {
+label {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+button, input, p {
   font-size: 1.2rem;
   font-weight: 400;
+}
+
+button, input {
+  padding: 0.8rem 1.2rem;
+  /* исправить: не работает, тк высота текста уменьшается */
 }
 
 @media (max-width: 1440px) {
