@@ -157,6 +157,12 @@ h1 {
 
 h2 {
   color: #000000;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+h3 {
+  color: #000000;
   font-size: 1.6rem;
   font-weight: 500;
 }
@@ -185,7 +191,8 @@ button, input, p {
 
 button, input {
   padding: 0.8rem 1.2rem;
-  /* исправить: не работает, тк высота текста уменьшается */
+  height: auto;
+  line-height: 1.6rem;
 }
 
 @media (max-width: 1440px) {
