@@ -5,7 +5,7 @@ export default function Mission() {
   return (
     <>
       <ItemGroup className={styles.section}>
-        <Item className={styles.block}>
+        <Item className={styles.card}>
           <h3>Видение</h3>
           <p>
             Мы — ведущее экспертное сообщество Уральского региона в сфере бизнес-инжиниринга.
@@ -13,7 +13,7 @@ export default function Mission() {
             которые знают и активно используют ключевые компании региона для достижения своих стратегических целей.
           </p>
         </Item>
-        <Item className={`${styles.block} ${styles.principlesBlock}`}>
+        <Item className={`${styles.card} ${styles.principlesBlock}`}>
           <h3>Принципы</h3>
           <ul>
             Наше сообщество основано на принципах открытости, коллегиальности и самоорганизации.
@@ -31,7 +31,7 @@ export default function Mission() {
             </li>
           </ul>
         </Item>
-        <Item className={styles.block}>
+        <Item className={styles.card}>
           <h3>Миссия</h3>
           <p>
             Мы развиваем бизнес-среду Урала, создавая сообщество лидеров в области бизнес-инжиниринга.
