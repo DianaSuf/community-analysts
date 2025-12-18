@@ -18,29 +18,31 @@ export default function Header() {
         <Link className={styles.containerImg} to={AppRoute.Main}>
           <img src="/img/logo.svg" alt=""/>
         </Link>
-        <Item>
-          <NavLink 
-            to={AppRoute.Main}
-            end
-            className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}
-          >
-            Главная
-          </NavLink>
-          <NavLink 
-            to={AppRoute.Members}
-            className={({ isActive }) => `${styles.navLink} ${!isAccessAllowed ? styles.disabled : ''} ${isActive ? styles.active : ''}`}
-            onClick={(e) => !isAccessAllowed && e.preventDefault()}
-          >
-            Участники сообщества
-          </NavLink>
-          <NavLink 
-            to={AppRoute.Events}
-            className={({ isActive }) => `${styles.navLink} ${!isAccessAllowed ? styles.disabled : ''} ${isActive ? styles.active : ''}`}
-            onClick={(e) => !isAccessAllowed && e.preventDefault()}
-          >
-            Мероприятия
-          </NavLink>
-        </Item>
+        {!(authorizationStatus === AuthorizationStatus.UNKNOWN) && (
+          <Item>
+            <NavLink 
+              to={AppRoute.Main}
+              end
+              className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}
+            >
+              Главная
+            </NavLink>
+            <NavLink 
+              to={AppRoute.Members}
+              className={({ isActive }) => `${styles.navLink} ${!isAccessAllowed ? styles.disabled : ''} ${isActive ? styles.active : ''}`}
+              onClick={(e) => !isAccessAllowed && e.preventDefault()}
+            >
+              Участники сообщества
+            </NavLink>
+            <NavLink 
+              to={AppRoute.Events}
+              className={({ isActive }) => `${styles.navLink} ${!isAccessAllowed ? styles.disabled : ''} ${isActive ? styles.active : ''}`}
+              onClick={(e) => !isAccessAllowed && e.preventDefault()}
+            >
+              Мероприятия
+            </NavLink>
+          </Item>
+        )}
       </Item>
       {authorizationStatus === AuthorizationStatus.UNKNOWN && (
         <Item>

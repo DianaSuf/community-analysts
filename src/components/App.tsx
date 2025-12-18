@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HistoryRouter from './history-route'
+import { Route, Routes } from "react-router-dom";
 import { AppRoute, AuthorizationStatus } from "../const";
 import MainScreen from "../pages/Main";
 import Layout from "./layout/layout";
@@ -10,6 +11,7 @@ import { PrivateRoute } from "./PrivateRoute";
 import MembersScreen from "@/pages/Members";
 import EventsScreen from "@/pages/Events";
 import { getAuthLoadingStatus } from "@/store/slices/user-slice";
+import browserHistory from "@/browser-history";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -34,7 +36,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Main}
@@ -87,7 +89,7 @@ function App() {
           />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 
