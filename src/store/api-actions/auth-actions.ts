@@ -1,9 +1,9 @@
 import type { AxiosInstance } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import type { AppDispatch, State } from '../types/state';
-import type { IAuthRole, IRegisterData, ITokenResponse, ILoginData } from '../types/user-data';
-import { APIRoute, type AuthorizationStatusType, AuthorizationStatus, AppRoute } from '../const';
-import { redirectToRoute } from './action';
+import type { AppDispatch, State } from '../../types/state';
+import type { IAuthRole, IRegisterData, ITokenResponse, ILoginData } from '../../types/user-data';
+import { APIRoute, type AuthorizationStatusType, AuthorizationStatus, AppRoute } from '../../const';
+import { redirectToRoute } from '../action';
 
 export const checkAuthAction = createAsyncThunk<AuthorizationStatusType, undefined, {
   dispatch: AppDispatch;

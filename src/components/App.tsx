@@ -2,16 +2,17 @@ import { useEffect } from "react";
 import HistoryRouter from './history-route'
 import { Route, Routes } from "react-router-dom";
 import { AppRoute, AuthorizationStatus } from "../const";
-import MainScreen from "../pages/Main";
+import MainScreen from "../pages/main-screen/main-screen";
 import Layout from "./layout/layout";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { checkAuthAction } from "../store/api-actions";
-import ProfileScreen from "@/pages/Profile";
+import ProfileScreen from "@/pages/profile-sceen/profile-sceen";
 import { PrivateRoute } from "./PrivateRoute";
 import MembersScreen from "@/pages/Members";
 import EventsScreen from "@/pages/Events";
 import { getAuthLoadingStatus } from "@/store/slices/user-slice";
 import browserHistory from "@/browser-history";
+import BidScreen from "@/pages/bid-screen/bid-screen";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -84,6 +85,18 @@ function App() {
                 ]}
               >
                 <EventsScreen />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={AppRoute.Bid}
+            element={
+              <PrivateRoute 
+                allowedRoles={[
+                  AuthorizationStatus.ADMIN,
+                ]}
+              >
+                <BidScreen />
               </PrivateRoute>
             }
           />

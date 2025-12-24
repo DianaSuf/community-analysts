@@ -3,6 +3,7 @@ export const AppRoute = {
   Profile: '/profile',
   Members: '/members',
   Events: '/events',
+  Bid: '/bid',
 } as const;
 
 export const ModalType = {
@@ -15,6 +16,7 @@ export const APIRoute = {
   Refresh: '/auth/token',
   Register: '/user/create',
   Login: '/auth/login',
+  Bid: '/user/bids',
 } as const;
 
 export const AuthorizationStatus = {

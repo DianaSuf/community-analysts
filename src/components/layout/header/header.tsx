@@ -48,6 +48,15 @@ export default function Header() {
             >
               Мероприятия
             </NavLink>
+             {authorizationStatus === AuthorizationStatus.ADMIN && (
+              <NavLink 
+                to={AppRoute.Bid}
+                className={({ isActive }) => `${styles.navLink} ${!isAccessAllowed ? styles.disabled : ''} ${isActive ? styles.active : ''}`}
+                onClick={(e) => !isAccessAllowed && e.preventDefault()}
+              >
+                Заявки
+              </NavLink>
+             )}
           </Item>
         )}
       </Item>

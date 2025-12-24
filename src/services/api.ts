@@ -52,34 +52,43 @@ export const createAPI = (): AxiosInstance => {
   
       const statusCode = error.response?.status;
 
-      if (statusCode === 401 && !originalRequest._retry && originalRequest.url !== APIRoute.Refresh) {
-        originalRequest._retry = true;
-        localStorage.removeItem('accessToken');
-        const refreshToken = localStorage.getItem('refreshToken');
-        
-        if (refreshToken) {
-          try {
-            const { data } = await api.post<ITokenResponse>(APIRoute.Refresh, { token: refreshToken });
-
-            localStorage.setItem('accessToken', data.accessToken);
-            localStorage.setItem('refreshToken', data.refreshToken);
-
-            if (originalRequest.headers) {
-              originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
-            }
-
-            return api(originalRequest);
-          } catch (refreshError) {
-            store.dispatch(logoutUser());
-            throw refreshError;
-          }
-        } else {
-          store.dispatch(logoutUser());
-        }
+      // Если 401 на запрос refresh токена - сразу logout
+      if (statusCode === 401 && originalRequest.url === APIRoute.Refresh) {
+        store.dispatch(logoutUser());
+        throw error;
       }
 
-      if (statusCode === 401 && (originalRequest._retry || originalRequest.url === APIRoute.Refresh)) {
-        store.dispatch(logoutUser());
+      // Если 401 на обычный запрос - попробовать обновить токен
+      if (statusCode === 401 && !originalRequest._retry && originalRequest.url !== APIRoute.Refresh) {
+        originalRequest._retry = true;
+        
+        const refreshToken = localStorage.getItem('refreshToken');
+        
+        if (!refreshToken) {
+          // Если refreshToken отсутствует - logout
+          store.dispatch(logoutUser());
+          throw error;
+        }
+
+        try {
+          // Удаляем старый accessToken перед запросом на refresh
+          localStorage.removeItem('accessToken');
+          
+          const { data } = await api.post<ITokenResponse>(APIRoute.Refresh, { refreshToken: refreshToken });
+
+          localStorage.setItem('accessToken', data.accessToken);
+          localStorage.setItem('refreshToken', data.refreshToken);
+
+          if (originalRequest.headers) {
+            originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
+          }
+
+          return api(originalRequest);
+        } catch (refreshError) {
+          // Если refresh вернул 401 или другую ошибку - logout
+          store.dispatch(logoutUser());
+          throw refreshError;
+        }
       }
       
       if (error.response && shouldDisplayError(error.response)) {
