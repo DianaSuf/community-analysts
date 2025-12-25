@@ -63,12 +63,6 @@ export const createAPI = (): AxiosInstance => {
         originalRequest._retry = true;
         
         const refreshToken = localStorage.getItem('refreshToken');
-        
-        if (!refreshToken) {
-          // Если refreshToken отсутствует - logout
-          store.dispatch(logoutUser());
-          throw error;
-        }
 
         try {
           // Удаляем старый accessToken перед запросом на refresh

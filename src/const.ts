@@ -17,6 +17,7 @@ export const APIRoute = {
   Register: '/user/create',
   Login: '/auth/login',
   Bid: '/user/bids',
+  Role: '/user/updateRole',
 } as const;
 
 export const AuthorizationStatus = {
@@ -28,3 +29,10 @@ export const AuthorizationStatus = {
 } as const;
 
 export type AuthorizationStatusType = typeof AuthorizationStatus[keyof typeof AuthorizationStatus];
+
+export const BidConst = {
+  New: 'new',
+  Rejected: 'rejected',
+} as const;
+
+export type BidType = typeof BidConst[keyof typeof BidConst];

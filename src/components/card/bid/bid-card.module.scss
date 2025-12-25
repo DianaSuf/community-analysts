@@ -1,2 +1,45 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
+
+.section {
+  gap: 0;
+}
+
+.block {
+  display: grid;
+  grid-template-columns: 105fr 180fr;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  gap: 4px;
+  width: 100%;
+}
+
+.title, .text {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 0;
+}
+
+.text {
+  font-weight: 300;
+}
+
+.rejected {
+  margin-bottom: 24px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 101fr 180fr;
+  gap: 8px;
+  width: 100%;
+}
+
+.buttonsSingle {
+  display: block;
+}
+
+.accept {
+  width: 100%;
+}

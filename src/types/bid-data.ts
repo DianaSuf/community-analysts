@@ -14,3 +14,8 @@ export interface IBidsData {
   newBid: IBid[];
   rejectedBid: IRejectedBid[];
 }
+
+export interface IUpdateRoleResponse {
+  idUser: number;
+  role: string;
+}

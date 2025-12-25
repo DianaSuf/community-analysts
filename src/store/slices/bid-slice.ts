@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchBidsAction } from "../api-actions/admin-actions";
-import type { IBid, IRejectedBid } from "@/types/admin-data";
+import type { IBid, IRejectedBid } from "@/types/bid-data";
 
 type BidState = {
   newBid: IBid[];
