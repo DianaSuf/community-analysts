@@ -22,7 +22,9 @@
 }
 
 .text {
-  font-weight: 300;
+  p {
+    font-weight: 300;
+  }
 }
 
 .rejected {
@@ -42,4 +44,8 @@
 
 .accept {
   width: 100%;
+}
+
+.link {
+  color: rgba(21, 101, 192, 1);
 }

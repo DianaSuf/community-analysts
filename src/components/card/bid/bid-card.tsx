@@ -46,8 +46,8 @@ export default function BidCard({ bid, type }: BidCardProps) {
           </Item>
           <Item className={styles.text}>
             {bid.position && <p>{bid.position}</p>}
-            {bid.company && <p>{bid.company}</p>}
-            {bid.email && <p>{bid.email}</p>}
+            {bid.company && <p className={styles.link}>{bid.company}</p>}
+            {bid.email && <p className={styles.link}>{bid.email}</p>}
           </Item>
         </ItemGroup>
         {type === BidConst.Rejected && (bid as IRejectedBid).reason && (

@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 import { openModal } from '@/store/slices/modal-slice';
 import { getAuthorizationStatus, logoutUser } from '@/store/slices/user-slice';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { PlusIcon } from 'lucide-react';
 
 export default function Header() {
   const dispatch = useAppDispatch();
@@ -72,6 +73,11 @@ export default function Header() {
       )}
       {!(authorizationStatus === AuthorizationStatus.UNKNOWN) && (
         <Item>
+          {authorizationStatus === AuthorizationStatus.ADMIN && (
+            <Button variant="outline">
+              Новое мероприятие <PlusIcon />
+            </Button>
+          )}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className={styles.avatar}>
