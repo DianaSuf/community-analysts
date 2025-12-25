@@ -1,0 +1,26 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.card {
+  .avatar {
+    background-color: rgba(185, 186, 186, 1);
+    border-radius: 12px;
+    width: 100%;
+    min-height: 200px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    p {
+      font-size: 3.2rem;
+      font-weight: 500;
+    }
+  }
+  
+  .content {
+    p {
+      font-weight: 300;
+      color: rgba(21, 101, 192, 1);
+    }
+  }
+}

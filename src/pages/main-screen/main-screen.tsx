@@ -36,7 +36,7 @@ export default function MainScreen() {
         </AspectRatio>
       </ItemGroup>
       <ItemGroup className={styles.sectionMission}>
-        <Card>
+        <Card borderRadius={24}>
           <h3>Видение</h3>
           <p>
             Мы — ведущее экспертное сообщество Уральского региона в сфере бизнес-инжиниринга.
@@ -44,7 +44,7 @@ export default function MainScreen() {
             которые знают и активно используют ключевые компании региона для достижения своих стратегических целей.
           </p>
         </Card>
-        <Card className={styles.principlesBlock}>
+        <Card borderRadius={24} className={styles.principlesBlock}>
           <h3>Принципы</h3>
           <ul>
             Наше сообщество основано на принципах открытости, коллегиальности и самоорганизации.
@@ -62,7 +62,7 @@ export default function MainScreen() {
             </li>
           </ul>
         </Card>
-        <Card>
+        <Card borderRadius={24}>
           <h3>Миссия</h3>
           <p>
             Мы развиваем бизнес-среду Урала, создавая сообщество лидеров в области бизнес-инжиниринга.

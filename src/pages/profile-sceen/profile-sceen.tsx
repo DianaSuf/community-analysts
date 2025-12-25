@@ -3,7 +3,8 @@ import { AuthorizationStatus } from "@/const";
 import { useAppSelector } from "@/hooks";
 import { getAuthorizationStatus } from "@/store/slices/user-slice";
 import styles from "./profile-sceen.module.scss"
-import NewUserCard from "@/components/card/new-user-card/new-user-card";
+import NewBidCard from "@/components/card/new-bid-card/new-bid-card";
+import RejectedBidCard from "@/components/card/rejected-bid-card/rejected-bid-card";
 
 export default function ProfileScreen() {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
@@ -13,7 +14,12 @@ export default function ProfileScreen() {
       <h1>Профиль</h1>
       {authorizationStatus === AuthorizationStatus.NEW_BID && (
         <ItemGroup className={styles.section}>
-          <NewUserCard />
+          <NewBidCard />
+        </ItemGroup>
+      )}
+      {authorizationStatus === AuthorizationStatus.REJECTED_BID && (
+        <ItemGroup className={styles.section}>
+          <RejectedBidCard />
         </ItemGroup>
       )}
     </>

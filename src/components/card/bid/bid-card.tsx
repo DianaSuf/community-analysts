@@ -36,7 +36,7 @@ export default function BidCard({ bid, type }: BidCardProps) {
 
   return (
     <>
-      <Card className={styles.section}>
+      <Card className={styles.section} borderRadius={16}>
         <h4>{bid.name}</h4>
         <ItemGroup className={styles.block}>
           <Item className={styles.title}>
