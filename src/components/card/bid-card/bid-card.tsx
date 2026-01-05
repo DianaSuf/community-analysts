@@ -4,8 +4,7 @@ import { Item, ItemGroup } from "@/components/ui/item"
 import type { IBid, IRejectedBid } from "@/types/bid-data"
 import { BidConst, type BidType, AuthorizationStatus } from "@/const"
 import { useAppDispatch } from "@/hooks"
-import { updateRoleAction } from "@/store/api-actions/admin-actions"
-import { fetchBidsAction } from "@/store/api-actions"
+import { fetchBidsAction, updateRoleAction } from "@/store/api-actions"
 import styles from "./bid-card.module.scss"
 
 interface BidCardProps {

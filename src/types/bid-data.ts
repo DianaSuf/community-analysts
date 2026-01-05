@@ -18,4 +18,5 @@ export interface IBidsData {
 export interface IUpdateRoleResponse {
   idUser: number;
   role: string;
+  reason?: string;
 }

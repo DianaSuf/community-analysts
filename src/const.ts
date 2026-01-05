@@ -18,6 +18,7 @@ export const APIRoute = {
   Login: '/auth/login',
   Bid: '/user/bids',
   Role: '/user/updateRole',
+  Members: '/user/all',
 } as const;
 
 export const AuthorizationStatus = {

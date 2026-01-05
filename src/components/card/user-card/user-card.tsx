@@ -1,8 +1,13 @@
 import Card from "@/components/card/card"
 import styles from "./user-card.module.scss"
 import { ItemGroup } from "@/components/ui/item"
+import type { IMemberData } from "@/types/members-data"
 
-export default function UserCard() {
+interface UserCardProps {
+  data: IMemberData
+}
+
+export default function UserCard({ data }: UserCardProps) {
   return (
     <>
       <Card className={styles.card} borderRadius={16}>
@@ -10,8 +15,8 @@ export default function UserCard() {
           <p>ФИ</p>
         </div>
         <ItemGroup className={styles.content}>
-          <h3>ИМЯ</h3>
-          <p>ПОЧТА</p>
+          <h3>{data.name}</h3>
+          <p>{data.email}</p>
         </ItemGroup>
       </Card>
     </>

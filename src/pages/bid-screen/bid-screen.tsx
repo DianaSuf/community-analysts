@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { ItemGroup, Item } from "@/components/ui/item"
 import styles from "./bid-screen.module.scss"
-import BidCard from "@/components/card/bid/bid-card"
+import BidCard from "@/components/card/bid-card/bid-card"
 import { useAppDispatch, useAppSelector } from "@/hooks"
 import { fetchBidsAction } from "@/store/api-actions"
 import { getNewBids, getRejectedBids } from "@/store/slices/bid-slice"
