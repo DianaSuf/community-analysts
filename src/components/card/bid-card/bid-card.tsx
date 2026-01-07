@@ -2,9 +2,10 @@ import Card from "@/components/card/card"
 import { Button } from "@/components/ui/button"
 import { Item, ItemGroup } from "@/components/ui/item"
 import type { IBid, IRejectedBid } from "@/types/bid-data"
-import { BidConst, type BidType, AuthorizationStatus } from "@/const"
+import { BidConst, type BidType, AuthorizationStatus, ModalType } from "@/const"
 import { useAppDispatch } from "@/hooks"
 import { fetchBidsAction, updateRoleAction } from "@/store/api-actions"
+import { openModal } from "@/store/slices/modal-slice"
 import styles from "./bid-card.module.scss"
 
 interface BidCardProps {
@@ -15,13 +16,20 @@ interface BidCardProps {
 export default function BidCard({ bid, type }: BidCardProps) {
   const dispatch = useAppDispatch()
 
-  const handleReject = async () => {
+  const handleRejectWithReason = async (reason: string) => {
     try {
-      await dispatch(updateRoleAction({ idUser: bid.id, role: AuthorizationStatus.REJECTED_BID })).unwrap()
+      await dispatch(updateRoleAction({ idUser: bid.id, role: AuthorizationStatus.REJECTED_BID, reason })).unwrap()
       dispatch(fetchBidsAction())
     } catch (error) {
       console.error('Ошибка при отклонении заявки:', error)
     }
+  }
+
+  const handleReject = () => {
+    dispatch(openModal({ 
+      type: ModalType.Reason, 
+      props: { onSubmit: handleRejectWithReason } 
+    }))
   }
 
   const handleAccept = async () => {
@@ -35,7 +43,7 @@ export default function BidCard({ bid, type }: BidCardProps) {
 
   return (
     <>
-      <Card className={styles.section} borderRadius={16}>
+      <Card className={styles.section} borderRadius={1.6}>
         <h4>{bid.name}</h4>
         <ItemGroup className={styles.block}>
           <Item className={styles.title}>

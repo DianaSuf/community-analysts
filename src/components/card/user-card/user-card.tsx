@@ -10,7 +10,7 @@ interface UserCardProps {
 export default function UserCard({ data }: UserCardProps) {
   return (
     <>
-      <Card className={styles.card} borderRadius={16}>
+      <Card className={styles.card} borderRadius={1.6}>
         <div className={styles.avatar}>
           <p>ФИ</p>
         </div>

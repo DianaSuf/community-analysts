@@ -9,6 +9,7 @@ export const AppRoute = {
 export const ModalType = {
   Authorization: 'authorization',
   Apply: 'apply',
+  Reason: 'reason',
 } as const;
 
 export const APIRoute = {

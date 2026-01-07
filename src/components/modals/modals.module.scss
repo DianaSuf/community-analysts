@@ -1,7 +1,29 @@
 .modal {
-  padding: 40px 30px;
+  padding: 4rem;
   border-radius: 2rem;
   max-width: 400px;
+}
+
+.modalReason {
+  padding: 2rem 2.5rem;
+
+  .header {
+    align-items: flex-start;
+  }
+
+  .buttonBlock {
+    display: flex;
+    justify-content: center;
+  }
+
+  .buttonСancel {
+    background-color: rgba(138, 140, 140, 1);
+    color: black;
+  }
+
+  .button {
+    width: auto;
+  }
 }
 
 .header {

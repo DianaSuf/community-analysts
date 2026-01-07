@@ -22,7 +22,7 @@ export const updateRoleAction = createAsyncThunk<void, IUpdateRoleResponse, {
   extra: AxiosInstance
 }>(
   'bid/updateRole',
-  async ({ idUser, role }, { extra: api }) => {
-    await api.post(APIRoute.Role, { idUser, role });
+  async ({ idUser, role, reason }, { extra: api }) => {
+    await api.post(APIRoute.Role, { idUser, role, reason });
   }
 );
