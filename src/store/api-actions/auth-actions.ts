@@ -39,11 +39,22 @@ export const loginAction = createAsyncThunk<void, ILoginData, {
 }>(
   'user/login',
   async ({ email, password }, { dispatch, extra: api }) => {
-    const { data: { accessToken, refreshToken } } = await api.post<ITokenResponse>(APIRoute.Login, { email, password });
+    const { data: { accessToken } } = await api.post<ITokenResponse>(APIRoute.Login, { email, password });
     localStorage.setItem('accessToken', accessToken);
-    localStorage.setItem('refreshToken', refreshToken);
 
     await dispatch(checkAuthAction());
     dispatch(redirectToRoute(AppRoute.Profile));
+  }
+);
+
+export const logoutAction = createAsyncThunk<void, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance
+}>(
+  'user/logout',
+  async (_arg, { extra: api }) => {
+    localStorage.removeItem('accessToken');
+    await api.get(APIRoute.Logout);
   }
 );

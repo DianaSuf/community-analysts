@@ -10,7 +10,8 @@ import {
 import { AppRoute, AuthorizationStatus, ModalType } from '@/const';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { openModal } from '@/store/slices/modal-slice';
-import { getAuthorizationStatus, logoutUser } from '@/store/slices/user-slice';
+import { getAuthorizationStatus } from '@/store/slices/user-slice';
+import { logoutAction } from '@/store/api-actions';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { PlusIcon } from 'lucide-react';
 
@@ -88,7 +89,7 @@ export default function Header() {
               <DropdownMenuItem className={styles.dropdownMenuText} onClick={() => navigate(AppRoute.Profile)}>
                 Личный кабинет
               </DropdownMenuItem>
-              <DropdownMenuItem className={styles.dropdownMenuText} onClick={() => dispatch(logoutUser())}>
+              <DropdownMenuItem className={styles.dropdownMenuText} onClick={() => dispatch(logoutAction())}>
                 Выйти из аккаунта
               </DropdownMenuItem>
             </DropdownMenuContent>

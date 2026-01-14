@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AuthorizationStatus, type AuthorizationStatusType } from "../../const";
-import { checkAuthAction } from "../api-actions";
+import { checkAuthAction, logoutAction } from "../api-actions";
 
 type UserState = {
   authorizationStatus: AuthorizationStatusType;
@@ -18,8 +18,6 @@ export const userSlice = createSlice({
   reducers: {
     logoutUser: (state) => {
       localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-
       state.authorizationStatus = AuthorizationStatus.UNKNOWN;
     },
   },
@@ -39,6 +37,12 @@ export const userSlice = createSlice({
       .addCase(checkAuthAction.rejected, (state) => {
         state.authorizationStatus = AuthorizationStatus.UNKNOWN;
         state.isLoading = false;
+      })
+      .addCase(logoutAction.fulfilled, (state) => {
+        state.authorizationStatus = AuthorizationStatus.UNKNOWN;
+      })
+      .addCase(logoutAction.rejected, (state) => {
+        state.authorizationStatus = AuthorizationStatus.UNKNOWN;
       });
   }
 });

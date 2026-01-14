@@ -27,6 +27,7 @@ export const createAPI = (): AxiosInstance => {
   const api = axios.create({
     baseURL: BACKEND_URL,
     timeout: REQUEST_TIMEOUT,
+    withCredentials: true,
   });
 
   api.interceptors.request.use(
@@ -61,17 +62,13 @@ export const createAPI = (): AxiosInstance => {
       // Если 401 на обычный запрос - попробовать обновить токен
       if (statusCode === 401 && !originalRequest._retry && originalRequest.url !== APIRoute.Refresh) {
         originalRequest._retry = true;
-        
-        const refreshToken = localStorage.getItem('refreshToken');
 
         try {
           // Удаляем старый accessToken перед запросом на refresh
           localStorage.removeItem('accessToken');
-          
-          const { data } = await api.post<ITokenResponse>(APIRoute.Refresh, { refreshToken: refreshToken });
 
+          const { data } = await api.get<ITokenResponse>(APIRoute.Refresh);
           localStorage.setItem('accessToken', data.accessToken);
-          localStorage.setItem('refreshToken', data.refreshToken);
 
           if (originalRequest.headers) {
             originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;

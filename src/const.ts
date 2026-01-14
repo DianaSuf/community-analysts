@@ -17,6 +17,7 @@ export const APIRoute = {
   Refresh: '/auth/token',
   Register: '/user/create',
   Login: '/auth/login',
+  Logout: '/auth/logout',
   Bid: '/user/bids',
   Role: '/user/updateRole',
   Members: '/user/all',
