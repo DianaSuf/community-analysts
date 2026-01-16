@@ -6,7 +6,7 @@ import { APIRoute } from '../const';
 import { logoutUser } from '../store/slices/user-slice';
 import { store } from '../store'
 
-const BACKEND_URL = 'http://localhost:8080/';
+const BACKEND_URL = import.meta.env.VITE_API_URL;
 const REQUEST_TIMEOUT = 5000;
 
 type DetailMessageType = {
